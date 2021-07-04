@@ -1,33 +1,50 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Curso = () => (
+//const curso = {
+//  "title": "React desde cero",
+//  "image": "https://edteam-media.s3.amazonaws.com/courses/big/7204fcde-37aa-49a2-a619-63459f834ada.png",
+//  "price": "50usd"
+//}
+
+//const mayorEdad = edad => edad > 18
+//const persona ={"nombre":"Alberto", "Apellido":"Quiroga", "edad": 9}
+
+const Curso = ({title, image, price, profesor}) => (
     
     <article className="card">
       <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-        <img src="https://edteam-media.s3.amazonaws.com/courses/small/bd8b449c-d796-440e-9b2d-d9c7cbd79862.png" alt="Poster del curso" />
+        <img src={image} alt={title} />
       </div>
       <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
         <h3 className="t5 s-mb-2 s-center">
-          Programación orientada a objetos con Go
+          {title}
         </h3>
-        <div className="s-mb-2 s-main-center">
-          <div className="card__teacher s-cross-center">
-            <div className="card__avatar s-mr-1">
-              <div className="circle img-container">
-                <img src="https://edteam-media.s3.amazonaws.com/users/thumbnail/d5060642-11c9-49cb-9029-fc0a3bf8ff94.png" alt="Tio Alexis" />
-              </div>
-            </div>
-            <span className="small">Alexys Lozada</span>
-          </div>
+        <div className="s-main-center">
+          {profesor}
         </div>
         <div className="s-main-center">
           <a className="button--ghost-alert button--tiny" href="#">
-            $ 20USD
+            {`$ ${price}`}
           </a>
         </div>
       </div>
     </article>
 
 );
+
+Curso.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
+  price: PropTypes.number,
+  profesor: PropTypes.string
+}
+
+Curso.defaultProps = {
+  title: "No se encontró título",
+  image: "https://images.adsttc.com/media/images/594d/7f74/b22e/3898/a700/0951/newsletter/ciudad.jpg?1498251119",
+  price: "--",
+  profesor: ""
+}
 
 export default Curso;
